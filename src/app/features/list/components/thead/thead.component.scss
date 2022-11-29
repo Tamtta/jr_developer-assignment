@@ -1,0 +1,30 @@
+thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+
+  margin: 0 auto;
+
+  th {
+    padding: 1.2rem 1.5rem;
+    width: 9rem;
+    display: inline-block;
+    border-right: 0.1rem solid #009879;
+
+    &.mail {
+      width: 16rem;
+    }
+  }
+
+  th:first-child {
+    border-left: 0.1rem solid #009879;
+  }
+}
+
+// th.mail {
+//   width: 170px;
+// }
+
+// .mail {
+//   width: 150px;
+// }

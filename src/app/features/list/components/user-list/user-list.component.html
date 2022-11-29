@@ -1,0 +1,16 @@
+<table class="styled-table">
+  <app-thead></app-thead>
+  <app-table-content
+    *ngFor="let user of users; index as id"
+    [mail]="user.mail"
+    [persNumber]="user.persNumber"
+    [name]="user.name"
+    [surname]="user.surname"
+    [birthday]="user.birthday"
+    [category]="user.category"
+    [status]="user.status"
+    (delete)="delete(user.id)"
+  ></app-table-content>
+</table>
+<button class="btn" routerLink="0">Add user</button>
+<!-- (delete)="delete(note.id)" (click)="toDetails(note.id)" -->

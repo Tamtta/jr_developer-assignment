@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "name": "ewrwer",
+      "surname": "ewrwer",
+      "persNumber": "423534523",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-08",
+      "category": "wee2",
+      "status": "wee2",
+      "id": 7
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "5555555555",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-03",
+      "category": "wee1",
+      "status": "suspended",
+      "id": 12
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55555",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-10",
+      "category": "wee1",
+      "status": "paused",
+      "id": 13
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55555555",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-15",
+      "category": "wee1",
+      "status": "suspended",
+      "id": 14
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55555555566",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-24",
+      "category": "wee",
+      "status": "paused",
+      "id": 16
+    }
+  ]
+}
