@@ -8,15 +8,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { TheadComponent } from './components/thead/thead.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+// import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [TableContentComponent, UserListComponent, AddUserComponent, TheadComponent],
+  declarations: [
+    TableContentComponent,
+    UserListComponent,
+    AddUserComponent,
+    TheadComponent,
+  ],
   imports: [
     CommonModule,
     ListRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
 })
 export class ListModule {}

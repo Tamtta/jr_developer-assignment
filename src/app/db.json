@@ -3,8 +3,8 @@
     {
       "name": "ewrwer",
       "surname": "ewrwer",
-      "persNumber": "423534523",
-      "mail": "jojua.tamta99@gmail.com",
+      "persNumber": "42353452355",
+      "mail": "jojua.tamta99@gmail.comeeee",
       "birthday": "2022-11-08",
       "category": "wee2",
       "status": "wee2",
@@ -43,12 +43,82 @@
     {
       "name": "TAMTA",
       "surname": "JOJUA",
+      "persNumber": "55555555555",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-17",
+      "category": "wee",
+      "status": "blocked",
+      "id": 15
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
       "persNumber": "55555555566",
       "mail": "jojua.tamta99@gmail.com",
-      "birthday": "2022-11-24",
-      "category": "wee",
-      "status": "paused",
+      "birthday": "2022-12-01",
+      "category": "wee1",
+      "status": "suspended",
       "id": 16
+    },
+    {
+      "name": "TAMTAa",
+      "surname": "JOJUAa",
+      "persNumber": "11223344555",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-08",
+      "category": "wee2",
+      "status": "wee2",
+      "id": 17
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "11122233344",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-24",
+      "category": "wee2",
+      "status": "wee2",
+      "id": 18
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55544433322",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-12-02",
+      "category": "idle",
+      "status": "blocked",
+      "id": 19
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55544433322",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-25",
+      "category": "idle",
+      "status": "blocked",
+      "id": 20
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55544433322",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-25",
+      "category": "idle",
+      "status": "blocked",
+      "id": 21
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55544433322",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-19",
+      "category": "wee1",
+      "status": "blocked",
+      "id": 22
     }
   ]
 }

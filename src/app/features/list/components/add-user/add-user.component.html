@@ -59,7 +59,9 @@
       <button class="btn-1" type="submit" [disabled]="addUser.invalid">
         Save
       </button>
-      <button class="btn-2" routerLink="/list">Cancel</button>
+      <button class="btn-2" routerLink="/list" (click)="cancel()">
+        Cancel
+      </button>
     </div>
   </form>
 </div>

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, EMPTY, first } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, EMPTY, first } from 'rxjs';
 import { IUser } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
+import { UserListComponent } from '../user-list/user-list.component';
 
 @Component({
   selector: 'app-add-user',
@@ -11,15 +12,41 @@ import { UsersService } from 'src/app/core/services/users.service';
   styleUrls: ['./add-user.component.scss'],
 })
 export class AddUserComponent implements OnInit {
+  // @Input() id!: number;
   addUser!: FormGroup;
-  // users: IUser[] = [];
-  // public usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject(
-  //   <IUser[]>[]
-  // );
+  id: number = JSON.parse(localStorage.getItem('id')!);
+  new: boolean = false;
 
-  constructor(private usersService: UsersService, private router: Router) {}
+  constructor(
+    private usersService: UsersService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    // localStorage.removeItem('id');
+    console.log(this.id);
+    if (this.id == null) {
+      this.new = true;
+    } else {
+      this.new = false;
+      this.usersService
+        .getById(this.id.toString())
+        .pipe(catchError(() => EMPTY))
+        .subscribe((res) =>
+          this.addUser.setValue({
+            name: res.name,
+            surname: res.surname,
+            persNumber: res.persNumber,
+            mail: res.mail,
+            birthday: res.birthday,
+            category: res.category,
+            status: res.status,
+            // id: res.id,
+          })
+        );
+    }
+
     this.addUser = new FormGroup<any>({
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
@@ -36,16 +63,44 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmitAddUser() {
-    this.usersService
-      .add(this.addUser.value)
-      .pipe(
-        first(),
-        catchError(() => EMPTY)
-      )
-      .subscribe((res) => {
-        console.log(res);
-        this.addUser.reset();
-        this.router.navigateByUrl('/list');
-      });
+    if (this.new) {
+      this.usersService
+        .add(this.addUser.value)
+        .pipe(
+          first(),
+          catchError(() => EMPTY)
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.addUser.reset();
+          this.router.navigateByUrl('/list');
+        });
+    } else {
+      this.usersService
+        .update(this.id.toString(), {
+          name: this.addUser.value.name,
+          surname: this.addUser.value.surname,
+          persNumber: this.addUser.value.persNumber,
+          mail: this.addUser.value.mail,
+          birthday: this.addUser.value.birthday,
+          category: this.addUser.value.category,
+          status: this.addUser.value.status,
+          id: this.id,
+        })
+        .pipe(
+          first(),
+          catchError(() => EMPTY)
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.addUser.reset();
+          this.router.navigateByUrl('/list');
+          localStorage.removeItem('id');
+        });
+    }
+  }
+
+  cancel() {
+    localStorage.removeItem('id');
   }
 }

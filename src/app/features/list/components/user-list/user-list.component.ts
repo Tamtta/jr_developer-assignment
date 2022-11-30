@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { catchError, EMPTY } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, EMPTY, raceWith } from 'rxjs';
 import { IUser } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
 
@@ -10,10 +11,17 @@ import { UsersService } from 'src/app/core/services/users.service';
 })
 export class UserListComponent implements OnInit {
   users: IUser[] = [];
+  // id!: number;
+  title = 'pagination';
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes = [5, 10, 15, 20];
 
   constructor(
     private usersService: UsersService,
-    private changeDet: ChangeDetectorRef
+    private changeDet: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +40,22 @@ export class UserListComponent implements OnInit {
       .delete(id.toString())
       .pipe(catchError(() => EMPTY))
       .subscribe((t) => this.loadUsers());
+  }
+
+  edit(id: number) {
+    this.router.navigateByUrl(`/list/${id}`);
+    // this.id = id;
+    localStorage.setItem('id', JSON.stringify(id));
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.loadUsers();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.loadUsers();
   }
 }

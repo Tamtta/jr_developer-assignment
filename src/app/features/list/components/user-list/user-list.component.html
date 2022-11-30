@@ -1,7 +1,23 @@
+<div>
+  <select (change)="onTableSizeChange($event)">
+    <option *ngFor="let size of tableSizes">
+      {{ size }}
+    </option>
+  </select>
+
+  <label>Search</label>
+  <input #searchNote type="text" placeholder="Type something.." />
+  <!-- (keyup)="search(searchNote.value)" -->
+</div>
 <table class="styled-table">
   <app-thead></app-thead>
   <app-table-content
-    *ngFor="let user of users; index as id"
+    *ngFor="
+      let user of users
+        | paginate
+          : { itemsPerPage: tableSize, currentPage: page, totalItems: count };
+      index as id
+    "
     [mail]="user.mail"
     [persNumber]="user.persNumber"
     [name]="user.name"
@@ -9,8 +25,16 @@
     [birthday]="user.birthday"
     [category]="user.category"
     [status]="user.status"
+    (edit)="edit(user.id)"
     (delete)="delete(user.id)"
   ></app-table-content>
 </table>
+<div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  ></pagination-controls>
+</div>
 <button class="btn" routerLink="0">Add user</button>
 <!-- (delete)="delete(note.id)" (click)="toDetails(note.id)" -->
