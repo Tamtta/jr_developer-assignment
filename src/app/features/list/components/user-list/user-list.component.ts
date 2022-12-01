@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, EMPTY, raceWith } from 'rxjs';
+import { catchError, EMPTY } from 'rxjs';
 import { IUser } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
 
@@ -17,6 +17,8 @@ export class UserListComponent implements OnInit {
   count: number = 0;
   tableSize: number = 10;
   tableSizes = [5, 10, 15, 20];
+
+  filterText: string = '';
 
   constructor(
     private usersService: UsersService,

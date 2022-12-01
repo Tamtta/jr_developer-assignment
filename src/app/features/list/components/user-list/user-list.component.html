@@ -1,19 +1,28 @@
-<div>
-  <select (change)="onTableSizeChange($event)">
-    <option *ngFor="let size of tableSizes">
-      {{ size }}
-    </option>
-  </select>
+<div class="container-for-select-and-search">
+  <div class="div-1">
+    <label>Search:</label>
+    <input
+      type="text"
+      placeholder="Type something.."
+      [(ngModel)]="filterText"
+    />
+  </div>
 
-  <label>Search</label>
-  <input #searchNote type="text" placeholder="Type something.." />
-  <!-- (keyup)="search(searchNote.value)" -->
+  <div class="div-2">
+    <label>Table size:</label>
+    <select (change)="onTableSizeChange($event)">
+      <option *ngFor="let size of tableSizes">
+        {{ size }}
+      </option>
+    </select>
+  </div>
 </div>
 <table class="styled-table">
   <app-thead></app-thead>
   <app-table-content
     *ngFor="
       let user of users
+        | filterPipe : filterText
         | paginate
           : { itemsPerPage: tableSize, currentPage: page, totalItems: count };
       index as id

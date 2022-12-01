@@ -17,6 +17,7 @@
 }
 
 .styled-table {
+  // background-color: red;
   border-collapse: collapse;
   margin: 0 auto;
   font-size: 0.9em;
@@ -30,4 +31,47 @@ app-thead,
 app-table-content {
   margin: 0 auto;
   display: block;
+}
+
+.container-for-select-and-search {
+  // background-color: aqua;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  div {
+    width: 30%;
+
+    select {
+      // margin-right: 10rem;
+      // display: inline-block;
+      width: 40%;
+      background-color: #2ecc7000;
+    }
+
+    input {
+      width: 80%;
+      background-color: #2ecc7000;
+    }
+
+    label {
+      width: 20%;
+    }
+
+    &.div-1 {
+      display: flex;
+      // justify-content: flex-end;
+      align-items: baseline;
+      border-left: 1px solid #2ecc700d;
+    }
+
+    &.div-2 {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      border-right: 1px solid #2ecc700d;
+    }
+  }
 }

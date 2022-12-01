@@ -22,8 +22,8 @@
     },
     {
       "name": "TAMTA",
-      "surname": "JOJUA",
-      "persNumber": "55555",
+      "surname": "halucinacia",
+      "persNumber": "55555555511",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-10",
       "category": "wee1",
@@ -119,6 +119,26 @@
       "category": "wee1",
       "status": "blocked",
       "id": 22
+    },
+    {
+      "name": "ana",
+      "surname": "ana",
+      "persNumber": "00990099001",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-12-08",
+      "category": "idle",
+      "status": "active",
+      "id": 23
+    },
+    {
+      "name": "anaana",
+      "surname": "ana",
+      "persNumber": "12334455678",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-12-16",
+      "category": "idle",
+      "status": "blocked",
+      "id": 24
     }
   ]
 }

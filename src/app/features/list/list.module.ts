@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { TheadComponent } from './components/thead/thead.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipe } from 'src/app/core/pipes/filter.pipe';
 // import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UserListComponent,
     AddUserComponent,
     TheadComponent,
+    FilterPipe,
   ],
   imports: [
     CommonModule,
