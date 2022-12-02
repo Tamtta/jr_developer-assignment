@@ -1,0 +1,32 @@
+<label>Users with a chosen status: </label>
+<select #list (change)="onStatusChange(list.value)">
+  <option *ngFor="let status of statusList">
+    {{ status }}
+  </option>
+</select>
+
+<table>
+  <tr>
+    <th class="status">Status</th>
+    <th>Name and surname</th>
+    <th>Email</th>
+    <th>Category</th>
+    <th>Personal Number</th>
+    <th>Birthday</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let user of filtered">
+    <td class="status">{{ user.status }}</td>
+    <td>{{ user.name }} {{ user.surname }}</td>
+    <td>{{ user.mail }}</td>
+    <td>{{ user.category }}</td>
+    <td>{{ user.persNumber }}</td>
+    <td>{{ user.birthday }}</td>
+    <td>
+      <button>Edit</button>
+      <button>Delete</button>
+    </td>
+  </tr>
+</table>
+
+<!-- (click)="onEditClicked(user) -->

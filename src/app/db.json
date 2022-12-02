@@ -6,17 +6,17 @@
       "persNumber": "42353452355",
       "mail": "jojua.tamta99@gmail.comeeee",
       "birthday": "2022-11-08",
-      "category": "wee2",
-      "status": "wee2",
+      "category": "vip",
+      "status": "active",
       "id": 7
     },
     {
       "name": "TAMTA",
       "surname": "JOJUA",
-      "persNumber": "5555555555",
+      "persNumber": "55555555555",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-03",
-      "category": "wee1",
+      "category": "vip",
       "status": "suspended",
       "id": 12
     },
@@ -26,17 +26,17 @@
       "persNumber": "55555555511",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-10",
-      "category": "wee1",
+      "category": "tester",
       "status": "paused",
       "id": 13
     },
     {
       "name": "TAMTA",
       "surname": "JOJUA",
-      "persNumber": "55555555",
+      "persNumber": "55555555555",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-15",
-      "category": "wee1",
+      "category": "admin",
       "status": "suspended",
       "id": 14
     },
@@ -46,7 +46,7 @@
       "persNumber": "55555555555",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-17",
-      "category": "wee",
+      "category": "tester",
       "status": "blocked",
       "id": 15
     },
@@ -56,7 +56,7 @@
       "persNumber": "55555555566",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-12-01",
-      "category": "wee1",
+      "category": "accountant",
       "status": "suspended",
       "id": 16
     },
@@ -66,8 +66,8 @@
       "persNumber": "11223344555",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-08",
-      "category": "wee2",
-      "status": "wee2",
+      "category": "idle",
+      "status": "blocked",
       "id": 17
     },
     {
@@ -76,8 +76,8 @@
       "persNumber": "11122233344",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-24",
-      "category": "wee2",
-      "status": "wee2",
+      "category": "idle",
+      "status": "rejected",
       "id": 18
     },
     {
@@ -116,7 +116,7 @@
       "persNumber": "55544433322",
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-11-19",
-      "category": "wee1",
+      "category": "vip",
       "status": "blocked",
       "id": 22
     },
@@ -139,6 +139,16 @@
       "category": "idle",
       "status": "blocked",
       "id": 24
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "55566677788",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-12-16",
+      "category": "idle",
+      "status": "active",
+      "id": 25
     }
   ]
 }

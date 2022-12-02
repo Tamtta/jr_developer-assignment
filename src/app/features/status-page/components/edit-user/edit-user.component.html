@@ -1,5 +1,7 @@
+<p>edit-user works!</p>
+[formGroup]="addUser" (ngSubmit)="onSubmitAddUser()"
 <div class="main-container">
-  <form [formGroup]="addUser" (ngSubmit)="onSubmitAddUser()">
+  <form>
     <div>
       <p>Name</p>
       <input type="text" formControlName="name" placeholder="Name" />
@@ -32,13 +34,13 @@
     <div>
       <p>Category</p>
       <select formControlName="category">
-        <option value="vip">Vip</option>
-        <option value="idle">Idle</option>
-        <option value="tester">Tester</option>
-        <option value="developer">Developer</option>
-        <option value="accountant">Accountant</option>
-        <option value="admin">Admin</option>
-        <!-- <option value="wee4">wee4</option> -->
+        <option value="vip">vip</option>
+        <option value="idle">idle</option>
+        <option value="wee">wee</option>
+        <option value="wee1">wee1</option>
+        <option value="wee2">wee2</option>
+        <option value="wee3">wee3</option>
+        <option value="wee4">wee4</option>
       </select>
     </div>
 
@@ -56,12 +58,8 @@
     </div>
 
     <div class="buttons">
-      <button class="btn-1" type="submit" [disabled]="addUser.invalid">
-        Save
-      </button>
-      <button class="btn-2" routerLink="/list" (click)="cancel()">
-        Cancel
-      </button>
+      <button class="btn-1" type="submit">Save</button>
+      <button class="btn-2" routerLink="/list">Cancel</button>
     </div>
   </form>
 </div>

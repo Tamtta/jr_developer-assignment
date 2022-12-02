@@ -8,3 +8,8 @@ export interface IUser {
   category: string;
   status: string;
 }
+
+export interface Update {
+  old: IUser;
+  new: IUser;
+}
