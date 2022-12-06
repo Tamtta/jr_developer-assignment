@@ -1,4 +1,4 @@
-<label>Users with a chosen status: </label>
+<label>Users with a chosen category: </label>
 <select #list (change)="onCategoryChange(list.value)">
   <option *ngFor="let category of categoryList">
     {{ category }}
@@ -15,7 +15,13 @@
     <th>Birthday</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let user of filtered">
+  <tr
+    *ngFor="
+      let user of filtered
+        | paginate
+          : { itemsPerPage: tableSize, currentPage: page, totalItems: count }
+    "
+  >
     <td class="category">{{ user.status }}</td>
     <td>{{ user.name }} {{ user.surname }}</td>
     <td>{{ user.mail }}</td>
@@ -28,3 +34,10 @@
     </td>
   </tr>
 </table>
+<div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  ></pagination-controls>
+</div>

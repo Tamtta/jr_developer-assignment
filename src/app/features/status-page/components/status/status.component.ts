@@ -1,16 +1,12 @@
 import {
   ChangeDetectorRef,
   Component,
-  EventEmitter,
-  Input,
   OnInit,
-  Output,
+  ViewContainerRef,
 } from '@angular/core';
-// import { MatDialog } from '@angular/material';
-// import { MatDialog } from '@angular/material';
-import { IUser, Update } from 'src/app/core/interfaces/IUser.interface';
+import { Subscription } from 'rxjs';
+import { IUser } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
-import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-status',
@@ -29,18 +25,21 @@ export class StatusComponent implements OnInit {
     'Rejected',
   ];
 
-  @Input() items!: IUser[];
-  @Output() delete: EventEmitter<IUser> = new EventEmitter<IUser>();
-  @Output() udpateEvent: EventEmitter<Update> = new EventEmitter<Update>();
+  title = 'pagination';
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes = [5, 10, 15, 20];
 
+  entry!: ViewContainerRef;
+  sub!: Subscription;
   users: IUser[] = [];
   filtered: IUser[] = [];
 
   constructor(
     private usersService: UsersService,
     private changeDet: ChangeDetectorRef
-  ) // public dialog: MatDialog
-  {}
+  ) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -50,7 +49,6 @@ export class StatusComponent implements OnInit {
     this.usersService.getAll().subscribe((users) => {
       this.users = users;
       this.changeDet.markForCheck();
-      // console.log(users);
     });
   }
 
@@ -64,19 +62,16 @@ export class StatusComponent implements OnInit {
     }
   }
 
-  // onEditClicked(user: IUser) {
-  // const dialog = this.dialog.open(EditUserComponent, {
-  //     width: '700px',
-  //     data: user,
-  //   });
+  editUser(id: number) {}
 
-  //   dialog.afterClosed().subscribe((res) => {
-  //     if (res) {
-  //       this.udpateEvent.emit({
-  //         old: user,
-  //         new: res,
-  //       });
-  //     }
-  //   });
-  // }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.loadUsers();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.loadUsers();
+  }
 }

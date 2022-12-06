@@ -20,6 +20,12 @@ export class CategoryComponent implements OnInit {
   users: IUser[] = [];
   filtered: IUser[] = [];
 
+  title = 'pagination';
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes = [5, 10, 15, 20];
+
   constructor(
     private usersService: UsersService,
     private changeDet: ChangeDetectorRef
@@ -45,5 +51,16 @@ export class CategoryComponent implements OnInit {
         return user.category.toLowerCase() === value.toLowerCase();
       }));
     }
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.loadUsers();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.loadUsers();
   }
 }

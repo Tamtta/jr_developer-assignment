@@ -15,7 +15,13 @@
     <th>Birthday</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let user of filtered">
+  <tr
+    *ngFor="
+      let user of filtered
+        | paginate
+          : { itemsPerPage: tableSize, currentPage: page, totalItems: count }
+    "
+  >
     <td class="status">{{ user.status }}</td>
     <td>{{ user.name }} {{ user.surname }}</td>
     <td>{{ user.mail }}</td>
@@ -23,10 +29,16 @@
     <td>{{ user.persNumber }}</td>
     <td>{{ user.birthday }}</td>
     <td>
-      <button>Edit</button>
+      <button (click)="editUser(user.id)">Edit</button>
       <button>Delete</button>
     </td>
   </tr>
 </table>
-
-<!-- (click)="onEditClicked(user) -->
+<div>
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  ></pagination-controls>
+</div>
+<app-modal></app-modal>
