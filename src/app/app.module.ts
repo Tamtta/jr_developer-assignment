@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryComponent } from './features/category-page/components/category/category.component';
 // import { MatDialogModule } from '@angular/material';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,9 +25,9 @@ import { CategoryComponent } from './features/category-page/components/category/
     HttpClientModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    // MatDialogModule,
+    MatDialogModule,
   ],
-  providers: [],
+  providers: [MatDialog, MatDialogRef],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

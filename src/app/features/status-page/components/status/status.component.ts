@@ -1,12 +1,17 @@
 import {
   ChangeDetectorRef,
   Component,
+  EventEmitter,
+  Input,
   OnInit,
+  Output,
   ViewContainerRef,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { IUser } from 'src/app/core/interfaces/IUser.interface';
+import { IUser, Update } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-status',
@@ -35,10 +40,18 @@ export class StatusComponent implements OnInit {
   sub!: Subscription;
   users: IUser[] = [];
   filtered: IUser[] = [];
+  user!: IUser;
+
+  private dialogRef: any;
+
+  @Input() items!: IUser[];
+  @Output() delete: EventEmitter<IUser> = new EventEmitter<IUser>();
+  @Output() udpateEvent: EventEmitter<Update> = new EventEmitter<Update>();
 
   constructor(
     private usersService: UsersService,
-    private changeDet: ChangeDetectorRef
+    private changeDet: ChangeDetectorRef,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +75,23 @@ export class StatusComponent implements OnInit {
     }
   }
 
-  editUser(id: number) {}
+  editUser(user: IUser) {
+    const dialog = this.dialog.open(ModalComponent, {
+      width: '700px',
+      height: '400px',
+      data: user,
+    });
+    this.dialogRef.updatePosition({ top: '3%', left: '20%' });
+
+    dialog.afterClosed().subscribe((res) => {
+      if (res) {
+        this.udpateEvent.emit({
+          old: user,
+          new: res,
+        });
+      }
+    });
+  }
 
   onTableDataChange(event: any) {
     this.page = event;
@@ -74,4 +103,9 @@ export class StatusComponent implements OnInit {
     this.page = 1;
     this.loadUsers();
   }
+
+  // this.usersService.getById(id.toString()).subscribe((user) => {
+  //   this.user = user;
+  //   this.changeDet.markForCheck();
+  // }),
 }
