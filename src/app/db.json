@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "name": "ewrwer",
-      "surname": "ewrwer",
+      "name": "ewwwww",
+      "surname": "eww",
       "persNumber": "42353452355",
       "mail": "jojua.tamta99@gmail.comeeee",
       "birthday": "2022-11-08",
-      "category": "vip",
+      "category": "idle",
       "status": "blocked",
       "id": 7
     },
@@ -127,7 +127,7 @@
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-12-08",
       "category": "idle",
-      "status": "active",
+      "status": "blocked",
       "id": 23
     },
     {
@@ -147,8 +147,68 @@
       "mail": "jojua.tamta99@gmail.com",
       "birthday": "2022-12-16",
       "category": "idle",
-      "status": "active",
+      "status": "blocked",
       "id": 25
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "44444455511",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-11-28",
+      "category": "idle",
+      "status": "suspended",
+      "id": 26
+    },
+    {
+      "name": "",
+      "surname": "",
+      "persNumber": "",
+      "mail": "",
+      "birthday": "",
+      "category": "",
+      "status": "",
+      "id": 27
+    },
+    {
+      "name": "elene",
+      "surname": "JOJUA",
+      "persNumber": "11223344557",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-12-30",
+      "category": "idle",
+      "status": "blocked",
+      "id": 28
+    },
+    {
+      "name": "",
+      "surname": "",
+      "persNumber": "",
+      "mail": "",
+      "birthday": "",
+      "category": "",
+      "status": "",
+      "id": 29
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "123",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "",
+      "category": "",
+      "status": "",
+      "id": 30
+    },
+    {
+      "name": "TAMTA",
+      "surname": "JOJUA",
+      "persNumber": "12344455566",
+      "mail": "jojua.tamta99@gmail.com",
+      "birthday": "2022-12-01",
+      "category": "idle",
+      "status": "blocked",
+      "id": 31
     }
   ]
 }

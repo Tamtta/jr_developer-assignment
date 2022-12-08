@@ -29,7 +29,7 @@
     <td>{{ user.persNumber }}</td>
     <td>{{ user.birthday }}</td>
     <td>
-      <button (click)="editUser(user)">Edit</button>
+      <button (click)="editUser(user.id)">Edit</button>
       <button>Delete</button>
     </td>
   </tr>
@@ -41,4 +41,5 @@
     (pageChange)="onTableDataChange($event)"
   ></pagination-controls>
 </div>
-<app-modal></app-modal>
+
+<button (click)="addUser()" class="btn">Add user!</button>

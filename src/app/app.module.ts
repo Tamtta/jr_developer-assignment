@@ -27,7 +27,7 @@ import {
     BrowserAnimationsModule,
     MatDialogModule,
   ],
-  providers: [MatDialog, MatDialogRef],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

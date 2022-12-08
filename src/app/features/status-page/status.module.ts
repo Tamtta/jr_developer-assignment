@@ -15,14 +15,24 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { EditComponent } from './components/edit/edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 @NgModule({
-  declarations: [StatusComponent, ModalComponent],
+  declarations: [
+    StatusComponent,
+    ModalComponent,
+    EditComponent,
+    AddUserComponent,
+  ],
   imports: [
     CommonModule,
     StatusRoutingModule,
     NgxPaginationModule,
     MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
 })

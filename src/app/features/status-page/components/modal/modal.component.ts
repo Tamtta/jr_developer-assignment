@@ -26,27 +26,8 @@ export class ModalComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public user: IUser
   ) {}
 
-  @Input() name: string = '';
-  @Input() surname: string = '';
-  @Input() mail: string = '';
-  @Input() birthday: string = '';
-  @Input() persNumber: string = '';
-  @Input() status: string = '';
-  @Input() category: string = '';
-
-  @Output() closeMeEvent = new EventEmitter();
-  @Output() confirmEvent = new EventEmitter();
-
   ngOnInit(): void {
     console.log('Modal init');
-  }
-
-  closeMe() {
-    this.closeMeEvent.emit();
-  }
-
-  confirm() {
-    this.confirmEvent.emit();
   }
 
   ngOnDestroy(): void {

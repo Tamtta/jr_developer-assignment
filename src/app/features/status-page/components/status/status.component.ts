@@ -2,7 +2,6 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
   OnInit,
   Output,
   ViewContainerRef,
@@ -11,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { IUser, Update } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { EditComponent } from '../edit/edit.component';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -40,11 +41,12 @@ export class StatusComponent implements OnInit {
   sub!: Subscription;
   users: IUser[] = [];
   filtered: IUser[] = [];
-  user!: IUser;
+  // id!: any;
+  // user!: IUser;
 
-  private dialogRef: any;
-
-  @Input() items!: IUser[];
+  // @Output() id!: any;
+  // @Output() editUserClicked!: boolean;
+  @Output() user!: IUser;
   @Output() delete: EventEmitter<IUser> = new EventEmitter<IUser>();
   @Output() udpateEvent: EventEmitter<Update> = new EventEmitter<Update>();
 
@@ -75,21 +77,22 @@ export class StatusComponent implements OnInit {
     }
   }
 
-  editUser(user: IUser) {
-    const dialog = this.dialog.open(ModalComponent, {
-      width: '700px',
-      height: '400px',
-      data: user,
+  editUser(id: number) {
+    this.usersService.getById(id.toString()).subscribe((user) => {
+      this.user = user;
+      console.log(user);
+      this.dialog.open(ModalComponent, {
+        width: '80rem',
+        height: '150rem',
+        data: user,
+      });
     });
-    this.dialogRef.updatePosition({ top: '3%', left: '20%' });
+  }
 
-    dialog.afterClosed().subscribe((res) => {
-      if (res) {
-        this.udpateEvent.emit({
-          old: user,
-          new: res,
-        });
-      }
+  addUser() {
+    this.dialog.open(AddUserComponent, {
+      width: '80rem',
+      height: '150rem',
     });
   }
 
@@ -103,9 +106,4 @@ export class StatusComponent implements OnInit {
     this.page = 1;
     this.loadUsers();
   }
-
-  // this.usersService.getById(id.toString()).subscribe((user) => {
-  //   this.user = user;
-  //   this.changeDet.markForCheck();
-  // }),
 }

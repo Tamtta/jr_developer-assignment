@@ -1,0 +1,67 @@
+<p>add-user works!</p>
+<div class="main-container">
+  <form [formGroup]="addUser" (ngSubmit)="onSubmitAddUser()">
+    <div>
+      <p>Name</p>
+      <input type="text" formControlName="name" placeholder="Name" />
+    </div>
+
+    <div>
+      <p>Surname</p>
+      <input type="text" formControlName="surname" placeholder="Surname" />
+    </div>
+
+    <div>
+      <p>Personal number</p>
+      <input
+        type="text"
+        formControlName="persNumber"
+        placeholder="Personal number"
+      />
+    </div>
+
+    <div>
+      <p>Email</p>
+      <input type="text" formControlName="mail" placeholder="Email" />
+    </div>
+
+    <div>
+      <p>Birthday</p>
+      <input type="date" formControlName="birthday" />
+    </div>
+
+    <div>
+      <p>Category</p>
+      <select formControlName="category">
+        <option value="vip">Vip</option>
+        <option value="idle">Idle</option>
+        <option value="tester">Tester</option>
+        <option value="developer">Developer</option>
+        <option value="accountant">Accountant</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+
+    <div>
+      <p>Status</p>
+      <select formControlName="status">
+        <option value="active">Active</option>
+        <option value="blocked">Blocked</option>
+        <option value="suspended">Suspended</option>
+        <option value="paused">Paused</option>
+        <option value="deleted">Deleted</option>
+        <option value="debt">Debt</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+
+    <div class="buttons">
+      <button class="btn-1" type="submit" [disabled]="addUser.invalid">
+        Save
+      </button>
+      <button class="btn-2" routerLink="/status" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
