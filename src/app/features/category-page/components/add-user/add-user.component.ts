@@ -1,29 +1,23 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, EMPTY, first } from 'rxjs';
-import { IUser } from 'src/app/core/interfaces/IUser.interface';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { first, catchError, EMPTY } from 'rxjs';
 import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.scss'],
 })
-export class EditComponent implements OnInit {
+export class AddUserComponent implements OnInit {
   addUser!: FormGroup;
-
-  new: boolean = false;
-
-  @Input() id!: any;
-  @Input() user!: IUser;
-  @Input() editUserClicked!: boolean;
 
   constructor(
     private usersService: UsersService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public dialogWindow: MatDialogRef<AddUserComponent>
   ) {}
 
   ngOnInit(): void {
@@ -42,18 +36,9 @@ export class EditComponent implements OnInit {
     });
   }
 
-  onSubmitUpdateUser(id: any) {
+  onSubmitAddUser() {
     this.usersService
-      .update(id.toString(), {
-        name: this.addUser.value.name,
-        surname: this.addUser.value.surname,
-        persNumber: this.addUser.value.persNumber,
-        mail: this.addUser.value.mail,
-        birthday: this.addUser.value.birthday,
-        category: this.addUser.value.category,
-        status: this.addUser.value.status,
-        id: this.id,
-      })
+      .add(this.addUser.value)
       .pipe(
         first(),
         catchError(() => EMPTY)

@@ -1,6 +1,16 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/core/interfaces/IUser.interface';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, EMPTY } from 'rxjs';
+import { IUser, Update } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-category',
@@ -28,8 +38,12 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private changeDet: ChangeDetectorRef
+    private changeDet: ChangeDetectorRef,
+    public dialog: MatDialog
   ) {}
+
+  @Output() user!: IUser;
+  @Output() udpateEvent: EventEmitter<Update> = new EventEmitter<Update>();
 
   ngOnInit(): void {
     this.loadUsers();
@@ -51,6 +65,32 @@ export class CategoryComponent implements OnInit {
         return user.category.toLowerCase() === value.toLowerCase();
       }));
     }
+  }
+
+  editUser(id: number) {
+    this.usersService.getById(id.toString()).subscribe((user) => {
+      this.user = user;
+      console.log(user);
+      this.dialog.open(ModalComponent, {
+        width: '80rem',
+        height: '150rem',
+        data: user,
+      });
+    });
+  }
+
+  addUser() {
+    this.dialog.open(AddUserComponent, {
+      width: '80rem',
+      height: '150rem',
+    });
+  }
+
+  delete(id: number) {
+    this.usersService
+      .delete(id.toString())
+      .pipe(catchError(() => EMPTY))
+      .subscribe((t) => this.loadUsers());
   }
 
   onTableDataChange(event: any) {

@@ -7,7 +7,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
+import { catchError, EMPTY, Subscription } from 'rxjs';
 import { IUser, Update } from 'src/app/core/interfaces/IUser.interface';
 import { UsersService } from 'src/app/core/services/users.service';
 import { AddUserComponent } from '../add-user/add-user.component';
@@ -41,13 +41,9 @@ export class StatusComponent implements OnInit {
   sub!: Subscription;
   users: IUser[] = [];
   filtered: IUser[] = [];
-  // id!: any;
-  // user!: IUser;
 
-  // @Output() id!: any;
-  // @Output() editUserClicked!: boolean;
   @Output() user!: IUser;
-  @Output() delete: EventEmitter<IUser> = new EventEmitter<IUser>();
+  // @Output() delete: EventEmitter<IUser> = new EventEmitter<IUser>();
   @Output() udpateEvent: EventEmitter<Update> = new EventEmitter<Update>();
 
   constructor(
@@ -105,5 +101,12 @@ export class StatusComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
     this.loadUsers();
+  }
+
+  delete(id: number) {
+    this.usersService
+      .delete(id.toString())
+      .pipe(catchError(() => EMPTY))
+      .subscribe((t) => this.loadUsers());
   }
 }

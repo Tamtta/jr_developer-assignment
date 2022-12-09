@@ -1,13 +1,23 @@
 <div class="main-container">
-  <form [formGroup]="addUser" (ngSubmit)="onSubmitAddUser()">
+  <form [formGroup]="addUser" (ngSubmit)="onSubmitUpdateUser(user.id)">
     <div>
       <p>Name</p>
-      <input type="text" formControlName="name" placeholder="Name" />
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Name"
+        [ngModel]="user.name"
+      />
     </div>
 
     <div>
       <p>Surname</p>
-      <input type="text" formControlName="surname" placeholder="Surname" />
+      <input
+        type="text"
+        formControlName="surname"
+        placeholder="Surname"
+        [ngModel]="user.surname"
+      />
     </div>
 
     <div>
@@ -16,22 +26,28 @@
         type="text"
         formControlName="persNumber"
         placeholder="Personal number"
+        [ngModel]="user.persNumber"
       />
     </div>
 
     <div>
       <p>Email</p>
-      <input type="text" formControlName="mail" placeholder="Email" />
+      <input
+        type="text"
+        formControlName="mail"
+        placeholder="Email"
+        [ngModel]="user.mail"
+      />
     </div>
 
     <div>
       <p>Birthday</p>
-      <input type="date" formControlName="birthday" />
+      <input type="date" formControlName="birthday" [ngModel]="user.birthday" />
     </div>
 
     <div>
       <p>Category</p>
-      <select formControlName="category">
+      <select formControlName="category" [ngModel]="user.category">
         <option value="vip">Vip</option>
         <option value="idle">Idle</option>
         <option value="tester">Tester</option>
@@ -43,7 +59,7 @@
 
     <div>
       <p>Status</p>
-      <select formControlName="status">
+      <select formControlName="status" [ngModel]="user.status">
         <option value="active">Active</option>
         <option value="blocked">Blocked</option>
         <option value="suspended">Suspended</option>
@@ -58,7 +74,7 @@
       <button class="btn-1" type="submit" [disabled]="addUser.invalid">
         Save
       </button>
-      <button class="btn-2" routerLink="/status" (click)="cancel()">
+      <button class="btn-2" routerLink="/list" (click)="cancel()">
         Cancel
       </button>
     </div>
